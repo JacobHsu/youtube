@@ -3,6 +3,14 @@
 * https://developers.google.com/youtube/v3/
 * https://support.google.com/youtube/answer/171780?hl=zh-Hant  
 
+# API
+
+[IFrame Player API](https://developers.google.com/youtube/iframe_api_reference)  
+
+# Google Analytics
+
+[官方網站- 網頁分析和報表功能](https://www.google.com.tw/intl/zh-TW/analytics/)  
+
 # [developers console](https://console.developers.google.com)  
 
 ### 總覽  

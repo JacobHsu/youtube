@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFrame Player API</title>
+</head>
+<body>
+  <p>Status</p>
+	<iframe id="existing-iframe-example"
+    width="640" height="360"
+    src="https://www.youtube.com/embed/KIViy7L_lo8?enablejsapi=1"
+    frameborder="0"
+    style="border: solid 4px #37474F"
+	></iframe>
+	
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	  var tag = document.createElement('script');
+	  tag.id = 'iframe-demo';
+	  tag.src = 'https://www.youtube.com/iframe_api';
+	  var firstScriptTag = document.getElementsByTagName('script')[0];
+	  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	  var player;
+	  function onYouTubeIframeAPIReady() {
+	    player = new YT.Player('existing-iframe-example', {
+	        events: {
+	          'onReady': onPlayerReady,
+	          'onStateChange': onPlayerStateChange
+	        }
+	    });
+	  }
+	  function onPlayerReady(event) {
+	    document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
+	  }
+	  function changeBorderColor(playerStatus) {
+	    var color;
+	    if (playerStatus == -1) {
+	      color = "#37474F"; // unstarted = gray
+	      $("p").html( '-1 (unstarted)' );
+	      $("p").css("color", "gray");
+	    } else if (playerStatus == 0) {
+	      color = "#FFFF00"; // ended = yellow
+	      $("p").html( '0 (ended)' );
+	      $("p").css("color", "yellow");
+	    } else if (playerStatus == 1) {
+	      color = "#33691E"; // playing = green
+	      $("p").html( '1 (playing)' );
+	      $("p").css("color", "green");
+	    } else if (playerStatus == 2) {
+	      color = "#DD2C00"; // paused = red
+	      $("p").html( '2 (paused)' );
+	      $("p").css("color", "red");
+	    } else if (playerStatus == 3) {
+	      color = "#AA00FF"; // buffering = purple
+	      $("p").html( '3 (buffering)' );
+	      $("p").css("color", "purple");
+	    } else if (playerStatus == 5) {
+	      color = "#FF6DOO"; // video cued = orange
+	      $("p").html( '5 (video cued)' );
+	      $("p").css("color", "orange");
+	    }
+	    if (color) {
+	      document.getElementById('existing-iframe-example').style.borderColor = color;
+	    }
+	  }
+	  function onPlayerStateChange(event) {
+	    changeBorderColor(event.data);
+	  }
+</script>
+
+</body>
+</html>
