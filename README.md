@@ -10,6 +10,7 @@
 # Google Analytics
 
 [官方網站- 網頁分析和報表功能](https://www.google.com.tw/intl/zh-TW/analytics/)  
+[Event Tracking](https://developers.google.com/analytics/devguides/collection/analyticsjs/events)   
 
 # [developers console](https://console.developers.google.com)  
 
